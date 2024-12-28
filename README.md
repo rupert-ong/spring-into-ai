@@ -1,5 +1,20 @@
 # Spring AI
 
+Topics covered in this repository:
+
+- Basic Spring AI API setup and usage
+- Streaming responses
+- Prompt Engineering and Message Roles (with String Templates)
+- Structured Output conversion
+
+### References
+
+- [Spring AI Docs](https://docs.spring.io/spring-ai/reference/index.html)
+
+## Getting Started
+
+Be sure to obtain an API key from OpenAI and set it in your environment variables as `OPENAI_API_KEY`.
+
 ## Prompt Engineering
 
 Prompts serve as the foundation for language-based inputs that guide an AI model to produce specific outputs. In Spring,
@@ -22,6 +37,33 @@ There are different roles in the prompt engineering process:
 
 - [OpenAI Guidelines](https://platform.openai.com/docs/guides/prompt-engineering)
 - [ChatGPT Prompt Engineering for Developers](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
+
+## Structured Output
+
+The Spring AI Structured Output Converters help to convert the LLM output into a structured format. As shown in the
+following diagram, this approach operates around the LLM text completion endpoint:
+
+![Structured Output Architecture Diagram](./assets/images/structured-output-architecture.jpg)
+
+Before the LLM call, the converter appends format instructions to the prompt, providing explicit guidance to the models
+on generating the desired output structure. These instructions act as a blueprint, shaping the model’s response to
+conform to the specified format.
+
+After the LLM call, the converter takes the model’s output text and transforms it into instances of the structured type.
+This conversion process involves parsing the raw text output and mapping it to the corresponding structured data
+representation, such as JSON, XML, or domain-specific data structures.
+
+Implemented converters include:
+
+- Bean Output Converter
+- Map Output Converter
+- List Output Converter
+
+Both a (simplified) high level and low level API are provided for structured output conversion.
+
+### References
+
+- [Spring AI Structured Output](https://docs.spring.io/spring-ai/reference/api/structured-output-converter.html)
 
 ## Resources
 
