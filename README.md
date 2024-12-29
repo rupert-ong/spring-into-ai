@@ -65,6 +65,16 @@ Both a (simplified) high level and low level API are provided for structured out
 
 - [Spring AI Structured Output](https://docs.spring.io/spring-ai/reference/api/structured-output-converter.html)
 
+## Using Additional Data in AI Models
+
+There are several strategies to incorporate additional data into AI models, as they may only be trained on public
+knowledge up until a certain date or do not know about private or corporate data.
+
+- Fine Tune the Model: Train the model on your data (most difficult)
+- Stuffing the Prompt: Adding your data (context) into the prompt -> adds to token cost
+- Function Calling: LLM calls function to retrieve data
+- RAG (Retrieval Augmented Generation): Use a retrieval model to fetch **relevant** data
+
 ## Resources
 
 ### Httpie Installation
