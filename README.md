@@ -75,6 +75,26 @@ knowledge up until a certain date or do not know about private or corporate data
 - Function Calling: LLM calls function to retrieve data
 - RAG (Retrieval Augmented Generation): Use a retrieval model to fetch **relevant** data
 
+### RAG
+
+Retrieval Augmented Generation (RAG) has emerged to address the challenge of incorporating relevant data into prompts
+for accurate AI model responses. At a high level, this is an ETL (Extract, Transform and Load) pipeline. The vector
+database is used in the retrieval part of RAG technique.
+
+![ETL Pipeline](./assets/images/spring-ai-rag.jpg)
+
+The job reads unstructured data from your documents, transforms it and then writes it into a vector database, which
+is queried based on similarity (rather than exact match as in the tradition database query).
+
+Part of loading the unstructured data into the vector database involves splitting the original document into smaller
+pieces. Care must be taken not to split the documents in the middle of sentences, paragraphs, code methods, etc.
+
+#### References
+
+- [RAG Concept](https://docs.spring.io/spring-ai/reference/concepts.html#concept-rag)
+- [RAG Advisor API](https://docs.spring.io/spring-ai/reference/api/retrieval-augmented-generation.html)
+- [Vector Databases](https://docs.spring.io/spring-ai/reference/api/vectordbs.html)
+
 ## Resources
 
 ### Httpie Installation

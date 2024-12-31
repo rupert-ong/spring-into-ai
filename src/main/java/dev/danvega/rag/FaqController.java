@@ -20,6 +20,7 @@ public class FaqController {
         .build();
   }
 
+  // http :8080/faq message=="How can I buy tickets for the Olympic Games Paris 2024"
   @GetMapping
   public String faq(@RequestParam(value = "message", defaultValue = "How can I buy tickets for the Olympic Games Paris 2024")
                     String message) {
