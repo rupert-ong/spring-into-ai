@@ -15,6 +15,9 @@ Topics covered in this repository:
 
 Be sure to obtain an API key from OpenAI and set it in your environment variables as `OPENAI_API_KEY`.
 
+For the function call examples, you will need an API key from [WeatherAPI](https://www.weatherapi.com/) and set the
+environment variable `WEATHER_API_KEY`.
+
 ## Prompt Engineering
 
 Prompts serve as the foundation for language-based inputs that guide an AI model to produce specific outputs. In Spring,
@@ -94,6 +97,25 @@ pieces. Care must be taken not to split the documents in the middle of sentences
 - [RAG Concept](https://docs.spring.io/spring-ai/reference/concepts.html#concept-rag)
 - [RAG Advisor API](https://docs.spring.io/spring-ai/reference/api/retrieval-augmented-generation.html)
 - [Vector Databases](https://docs.spring.io/spring-ai/reference/api/vectordbs.html)
+
+## Function Calling
+
+The integration of function support in AI models, permits the model to request the execution of client-side functions,
+thereby accessing necessary information or performing tasks dynamically as required. An example would be getting the
+current weather conditions of a given city.
+
+![Function Calling Basic Flow](./assets/images/function-calling-basic-flow.jpg)
+
+Custom Java functions are registered with the ChatClient, and the AI model can intelligently output a JSOn object
+containing arguments to call one or many registered functions.
+
+In general, the custom functions need to provide a function `name`, `description`, and the function call signature (as
+JSON schema) to let the model know what arguments the function expects. The `description` helps the model to understand 
+when to call the function.
+
+### References
+- [Spring AI Function Calling API](https://docs.spring.io/spring-ai/reference/api/functions.html)
+- [Open AI Function Calling](https://platform.openai.com/docs/guides/function-calling)
 
 ## Resources
 
