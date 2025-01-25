@@ -117,6 +117,26 @@ when to call the function.
 - [Spring AI Function Calling API](https://docs.spring.io/spring-ai/reference/api/functions.html)
 - [Open AI Function Calling](https://platform.openai.com/docs/guides/function-calling)
 
+## Streaming
+
+The `StreamController` in this project demonstrates how to make non-blocking Spring AI calls that return `Flux<String>` for better, instantaneous feedback that streams in as the data becomes available.
+
+To stream the response using `httpie`, you can use the following command:
+
+```bash
+http --stream :8080/stream
+```
+
+Additionally, you can use the `stream.html` template to see the streaming response on the UI. This template sets up a simple chat interface where messages are streamed in real-time as they become available.
+
+The `stream()` method in the `StreamController` class is used to handle the streaming of responses. This method ensures that the responses are non-blocking and are streamed as they become available.
+
+### References
+
+- [Spring WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)
+- [Project Reactor](https://projectreactor.io/docs/core/release/reference/)
+- [HTTPie Streaming](https://httpie.io/docs/cli/streaming)
+
 ## Resources
 
 ### Httpie Installation
