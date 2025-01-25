@@ -110,16 +110,18 @@ Custom Java functions are registered with the ChatClient, and the AI model can i
 containing arguments to call one or many registered functions.
 
 In general, the custom functions need to provide a function `name`, `description`, and the function call signature (as
-JSON schema) to let the model know what arguments the function expects. The `description` helps the model to understand 
+JSON schema) to let the model know what arguments the function expects. The `description` helps the model to understand
 when to call the function.
 
 ### References
+
 - [Spring AI Function Calling API](https://docs.spring.io/spring-ai/reference/api/functions.html)
 - [Open AI Function Calling](https://platform.openai.com/docs/guides/function-calling)
 
 ## Streaming
 
-The `StreamController` in this project demonstrates how to make non-blocking Spring AI calls that return `Flux<String>` for better, instantaneous feedback that streams in as the data becomes available.
+The `StreamController` in this project demonstrates how to make non-blocking Spring AI calls that return `Flux<String>`
+for better, instantaneous feedback that streams in as the data becomes available.
 
 To stream the response using `httpie`, you can use the following command:
 
@@ -127,15 +129,43 @@ To stream the response using `httpie`, you can use the following command:
 http --stream :8080/stream
 ```
 
-Additionally, you can use the `stream.html` template to see the streaming response on the UI. This template sets up a simple chat interface where messages are streamed in real-time as they become available.
+Additionally, you can use the `stream.html` template to see the streaming response on the UI. This template sets up a
+simple chat interface where messages are streamed in real-time as they become available.
 
-The `stream()` method in the `StreamController` class is used to handle the streaming of responses. This method ensures that the responses are non-blocking and are streamed as they become available.
+The `stream()` method in the `StreamController` class is used to handle the streaming of responses. This method ensures
+that the responses are non-blocking and are streamed as they become available.
 
 ### References
 
 - [Spring WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)
 - [Project Reactor](https://projectreactor.io/docs/core/release/reference/)
 - [HTTPie Streaming](https://httpie.io/docs/cli/streaming)
+
+## Spring AI Advisors
+
+At their core, Spring AI Advisors are components that intercept and potentially modify the flow of chat-completion
+requests and responses in your AI applications. The key player in this system is the AroundAdvisor, which allows
+developers to dynamically transform or utilize information within these interactions.
+
+The main benefits of using Advisors include:
+
+1. Encapsulation of Recurring Tasks: Package common GenAI patterns into reusable units.
+2. Transformation: Augment data sent to Language Models (LLMs) and format responses sent back to clients.
+3. Portability: Create reusable transformation components that work across various models and use cases.
+
+Spring AI comes with several pre-built Advisors to handle common scenarios and Gen AI patterns:
+
+- `MessageChatMemoryAdvisor`, `PromptChatMemoryAdvisor`, and `VectorStoreChatMemoryAdvisor`: These manage conversation history
+in various ways.
+- `QuestionAnswerAdvisor`: Implements the RAG (Retrieval-Augmented Generation) pattern for improved question-answering
+capabilities.
+- `SafeGuardAdvisor`: Very basic, sensitive words based advisor, that helps prevent the model from generating harmful or
+inappropriate content. It demonstrates how to block a request by not making the call to invoke the next adviser in the
+chain. In this case, it's advisor's responsible for filling out the response or throw and error.
+
+### References
+- [Spring AI Advisors](https://docs.spring.io/spring-ai/reference/api/advisors.html)
+- [Supercharging Your AI Applications with Spring AI Advisors](https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors)
 
 ## Resources
 
